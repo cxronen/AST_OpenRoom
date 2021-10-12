@@ -1,7 +1,0 @@
-language: python
-
-python:
-  - "2.7"
-
-script: 
-  - python cx.py $Server $CxUsername $CxPassword $ClientSecret $ProjectName $TeamName $PresetName $FolderExclusions $FileExclusions https://github.com/cxronen/OpenRoom.git "master" 500 500 500 
