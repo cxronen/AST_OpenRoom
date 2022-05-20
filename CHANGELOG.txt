@@ -4,7 +4,7 @@
 - Minor fix correcting an html special characters issue.
 	or-reserve.php (367)
 	
-	21122111323222222333
+	
 1
 OpenRoom 1.4 - 3/5/2012
 ========================================================================
