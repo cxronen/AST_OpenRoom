@@ -3,7 +3,7 @@
 ===22=====================================================================
 - Minor fix correcting an html special characters issue.
 	or-reserve.php (367)
-	
+	44
 	
 1
 OpenRoom 1.4 - 3/5/2012
