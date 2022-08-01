@@ -2,7 +2,7 @@ OpenRoom
 Online Space Management
 Copyright (C) 2010 Ball State University Libraries
 
-This file is part of OpenRoom.
+This file is part of OpenRoom.1
 
 OpenRoom is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
