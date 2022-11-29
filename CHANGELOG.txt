@@ -6,7 +6,7 @@
 	
 	
 
-OpenRoom 1.4 - 3/5/2012 123
+OpenRoom 1.4 - 3/5/2012 
 ========================================================================
 -Corrected an issue that was causing room creation to fail silently when
 there are no existing room groups, and also causing group deletion to
