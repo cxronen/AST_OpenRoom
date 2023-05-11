@@ -2,7 +2,7 @@ name: Security Scan
 on:
   push:
     branches:
-      - master1
+      - master
 jobs:
   scan:
     name: Run CxAST cli
