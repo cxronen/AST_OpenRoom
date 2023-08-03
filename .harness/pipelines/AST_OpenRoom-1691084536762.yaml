@@ -21,6 +21,6 @@ pipeline:
                     jobName: AST_BookStore
                     jobParameter: []
                     unstableStatusAsSuccess: false
-                    useConnectorUrlForJobExecution: false
+                    useConnectorUrlForJobExecution: true
                   timeout: 1h
         tags: {}
