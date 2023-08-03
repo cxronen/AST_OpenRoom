@@ -30,7 +30,7 @@ pipeline:
                           rm -rf src
                           mkdir src 
                           git clone https://github.com/cxronen/AST_OpenRoomProd.git src
-                          cx scan create --project-name myproject -s /home/ubuntu/harness/src --branch main
+                          ./cx scan create --project-name myproject -s /home/ubuntu/harness/src --branch main
                     environmentVariables: []
                     outputVariables: []
                     executionTarget:
