@@ -18,7 +18,7 @@ pipeline:
                   identifier: ShellScript_1
                   spec:
                     shell: Bash
-                    onDelegate: true
+                    onDelegate: false
                     source:
                       type: Inline
                       spec:
@@ -31,6 +31,10 @@ pipeline:
                           sh ~/../cxcli/cx scan -CxServer http://ronenlab.ngrok.io -CxUser develop1 -CxPassword General123! -ProjectName "CxServer/Mexico/Finanzas/Bookstore" -Preset All -LocationType folder -LocationPath $CI_PROJECT_DIR  -v
                     environmentVariables: []
                     outputVariables: []
+                    executionTarget:
+                      connectorRef: Container_host_SSH
+                      host: 192.168.56.125
+                      workingDirectory: /home/ubuntu/harness
                   timeout: 10m
               - step:
                   type: JenkinsBuild
