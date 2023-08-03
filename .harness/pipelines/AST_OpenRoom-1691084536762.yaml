@@ -13,6 +13,26 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          wget -O ~/../cxcli.gz https://github.com/Checkmarx/ast-cli/releases/download/2.0.53/ast-cli_linux_x64.tar.gz
+                          gunzip ~/../cxcli.gz -d ~/../cxcli
+                          rm -rf ~/../cxcli.gz
+                          tar xvf ~/../ast-cli_linux_x64.tar
+                          chmod +x ~/../cxcli/cx 
+                          sh ~/../cxcli/cx scan -CxServer http://ronenlab.ngrok.io -CxUser develop1 -CxPassword General123! -ProjectName "CxServer/Mexico/Finanzas/Bookstore" -Preset All -LocationType folder -LocationPath $CI_PROJECT_DIR  -v
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
                   type: JenkinsBuild
                   name: JenkinsBuild_1
                   identifier: JenkinsBuild_1
