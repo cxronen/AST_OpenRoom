@@ -22,11 +22,10 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: |-
+                        script: |
                           wget -O cxcli.gz https://github.com/Checkmarx/ast-cli/releases/download/2.0.53/ast-cli_linux_x64.tar.gz
                           gunzip cxcli.gz
-                          rm -rf cxcli.gz
-                          tar xvf ast-cli_linux_x64.tar
+                          tar xvf cxcli
                           chmod +x cx
                     environmentVariables: []
                     outputVariables: []
