@@ -22,11 +22,15 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: |
+                        script: |-
                           wget -O cxcli.gz https://github.com/Checkmarx/ast-cli/releases/download/2.0.53/ast-cli_linux_x64.tar.gz
-                          gunzip cxcli.gz
+                          gunzip -f cxcli.gz
                           tar xvf cxcli
                           chmod +x cx
+                          rm -rf src
+                          mkdir src 
+                          git clone https://github.com/cxronen/AST_OpenRoomProd.git src
+                          cx scan create --project-name myproject -s /home/ubuntu/harness/src --branch main
                     environmentVariables: []
                     outputVariables: []
                     executionTarget:
