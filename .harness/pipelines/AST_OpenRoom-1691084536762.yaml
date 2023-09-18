@@ -5,6 +5,59 @@ pipeline:
   projectIdentifier: default_project
   stages:
     - stage:
+        name: CxOne DAST
+        identifier: CxOne_DAST
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Container
+                  name: Container_1
+                  identifier: Container_1
+                  spec:
+                    connectorRef: Docker_Hub
+                    image: checkmarx/dast
+                    command: |
+                      -e CX_APIKEY=$API_MASTER_KEY \
+                        -v $(pwd):/demo checkmarx/dast:1.0.4 \
+                        web \
+                        --environment-id=b274d1e8-6cbf-4bff-b569-710cfcb8095f \
+                        --config=/demo/config_sweet.yaml \
+                        --base-url=https://ast.checkmarx.net \
+                        --output=/demo/output \
+                        --timeout=10000 \
+                        --update-interval=10 \
+                        --jvm-properties=-Xmx3G \
+                        --log-level=info \
+                        --verbose \
+                        --retry=3 \
+                        --retry-delay=20 \
+                        --fail-on HIGH
+                    shell: Sh
+                    infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                        connectorRef: MyConnector
+                        namespace: checkmarx
+                        resources:
+                          limits:
+                            cpu: "0.5"
+                            memory: 500Mi
+                        annotations: {}
+                        labels: {}
+                        containerSecurityContext:
+                          capabilities:
+                            drop: []
+                            add: []
+                        nodeSelector: {}
+                    outputVariables: []
+                    envVariables:
+                      API_MASTER_KEY: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2NjA0ZWY0Yy04NTcwLTRlOWYtOTM3Yy1hYTExM2RjM2ZhNjAifQ.eyJpYXQiOjE2NjY4MzM0NDksImp0aSI6ImQ1OGY0ZjE2LWJkOTUtNDZkNy04OGY2LTQ3ODY0NTliZDZhMCIsImlzcyI6Imh0dHBzOi8vaWFtLmNoZWNrbWFyeC5uZXQvYXV0aC9yZWFsbXMvbGF0YW0iLCJhdWQiOiJodHRwczovL2lhbS5jaGVja21hcngubmV0L2F1dGgvcmVhbG1zL2xhdGFtIiwic3ViIjoiOTRmZTMwNjgtMmEyMi00ZGZhLWFjMzgtMDhjY2UwZTY5MGZkIiwidHlwIjoiT2ZmbGluZSIsImF6cCI6ImFzdC1hcHAiLCJzZXNzaW9uX3N0YXRlIjoiNTkzMGM4ZjMtNmVjNy00NWMwLWJkYWItYjk1NjAyY2JmNmJkIiwic2NvcGUiOiIgb2ZmbGluZV9hY2Nlc3MiLCJzaWQiOiI1OTMwYzhmMy02ZWM3LTQ1YzAtYmRhYi1iOTU2MDJjYmY2YmQifQ.k5TwYpC17tw4G6Zj2zFBXRE82CybG5Cr_2LOIEXD27M
+                  timeout: 30m
+        tags: {}
+    - stage:
         name: Checkmarx One
         identifier: Checkmarx_One
         description: ""
@@ -14,7 +67,7 @@ pipeline:
             steps:
               - step:
                   type: ShellScript
-                  name: ShellScript_1
+                  name: ShellScript_CxOne
                   identifier: ShellScript_1
                   spec:
                     shell: Bash
