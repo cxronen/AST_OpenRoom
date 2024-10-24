@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	include("includes/or-theme.php");
+	#include("includes/or-theme.php");
 	include($_SESSION["themepath"] ."header.php");
 	
 	if($_SESSION["systemid"] == $settings["systemid"]){
