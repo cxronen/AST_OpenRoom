@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	
+	//prueba commit
 	include("includes/or-theme.php");
 	include($_SESSION["themepath"] ."header.php");
 	
