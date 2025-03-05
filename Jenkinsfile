@@ -5,8 +5,7 @@ node {
   stage('Checkmarx Analysis') {
     //writeFile file: 'cx_result_sonar.json', text: ''
     //sh "chmod 777 cx_result_sonar.json"
-    //sh "chmod 777 ${env.WORKSPACE}"
-    sh 'touch cx_result_sonar.json && chmod 666 cx_result_sonar.json'
+    sh "chmod -R 777 ${env.WORKSPACE}@2"
 
     checkmarxASTScanner additionalOptions: '--scan-types sast --report-format sonar', baseAuthUrl: '', branchName: 'master', checkmarxInstallation: 'CxCLI', credentialsId: '', projectName: 'AST_OpenRoom_jenkins', serverUrl: '', tenantName: '', useOwnAdditionalOptions: true
   }
