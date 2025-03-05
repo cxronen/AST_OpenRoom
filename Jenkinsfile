@@ -1,4 +1,9 @@
 node {
+  stage('Set Permissions') {
+            steps {
+                sh 'chmod -R 777 $WORKSPACE || true'
+            }
+  }
   stage('SCM') {
     checkout scm
   }
