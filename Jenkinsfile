@@ -9,6 +9,7 @@ node {
     }
   }
   stage('Checkmarx Analysis') {
-    checkmarxASTScanner additionalOptions: '--report-format sonar', baseAuthUrl: '', branchName: 'master', checkmarxInstallation: 'CxCLI', credentialsId: '', projectName: 'AST_OpenRoom_jenkins', serverUrl: '', tenantName: '', useOwnAdditionalOptions: true
+    sh "chmod 777 ${env.WORKSPACE}"
+    checkmarxASTScanner additionalOptions: '--scan-types sast --report-format sonar', baseAuthUrl: '', branchName: 'master', checkmarxInstallation: 'CxCLI', credentialsId: '', projectName: 'AST_OpenRoom_jenkins', serverUrl: '', tenantName: '', useOwnAdditionalOptions: true
   }
 }
