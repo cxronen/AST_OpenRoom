@@ -11,7 +11,7 @@ node {
     //sh "chmod -R 777 ${env.WORKSPACE}@2"
     //sh "chmod -R 777 ${env.WORKSPACE}"
 
-    checkmarxASTScanner additionalOptions: '--scan-types sast --report-format sonar', baseAuthUrl: '', branchName: 'master', checkmarxInstallation: 'CxCLI', credentialsId: '', projectName: 'AST_OpenRoom_jenkins', serverUrl: '', tenantName: '', useOwnAdditionalOptions: true
+    checkmarxASTScanner additionalOptions: '--output-path "." --scan-types sast --report-format sonar', baseAuthUrl: '', branchName: 'master', checkmarxInstallation: 'CxCLI', credentialsId: '', projectName: 'AST_OpenRoom_jenkins', serverUrl: '', tenantName: '', useOwnAdditionalOptions: true
   }
   stage('SonarQube Analysis') {
     def scannerHome = tool 'VMSonar';
